@@ -676,7 +676,7 @@
   .about-cta p{position:relative; z-index:1;font-size: 16px; color: #bcb2a4;max-width: 620px; margin: 0 auto 34px;font-family: 'Poppins', sans-serif;line-height: 1.85;}
   .about-cta .cta-buttons{display:flex; gap:14px; justify-content:center;flex-wrap:wrap; position:relative; z-index:1;}
 
-  /* ===== CREDITS / TEAM ===== */
+  /* ===== CREDITS PAGE ===== */
   .credits-grid{
     display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 26px; margin-top: 20px;
@@ -690,15 +690,37 @@
   }
   .credit-card:hover{ border-color: var(--gold); transform: translateY(-6px); box-shadow: 0 24px 50px rgba(26,21,18,.12); }
   .credit-avatar{
-    width: 76px; height: 76px; border-radius: 50%;
+    width: 90px; height: 90px; border-radius: 50%;
     margin: 0 auto 20px;
     background: linear-gradient(135deg, var(--gold), rgba(var(--gold-rgb),.6));
     color: #1a1512; display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 28px; font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 32px; font-family: 'Playfair Display', serif;
     box-shadow: 0 12px 30px rgba(var(--gold-rgb),.35);
+    transition: transform .5s cubic-bezier(.22,.9,.28,1.1);
   }
-  .credit-name{ font-size: 20px; font-weight: 900; color: var(--text); font-family: 'Playfair Display', serif; margin-bottom: 6px; }
-  .credit-role{ font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); font-family: 'Poppins', sans-serif; margin-bottom: 14px; }
+  .credit-card:hover .credit-avatar{ transform: scale(1.06) rotate(-4deg); }
+  .credit-avatar.ai-logo{
+    background: linear-gradient(135deg, #8fa88c 0%, rgba(143,168,140,.5) 100%);
+    color: #ffffff;
+    box-shadow: 0 12px 30px rgba(143,168,140,.45);
+    position: relative;
+  }
+  .credit-avatar.ai-logo::before{
+    content:"";
+    position: absolute; inset: -4px;
+    border-radius: 50%;
+    border: 1.5px dashed rgba(143,168,140,.55);
+    animation: aiSpin 18s linear infinite;
+  }
+  @keyframes aiSpin{ to{ transform: rotate(360deg); } }
+  .credit-avatar.ai-logo svg{
+    width: 44px; height: 44px;
+    fill: none; stroke: #ffffff;
+    stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+    position: relative; z-index: 1;
+  }
+  .credit-name{ font-size: 22px; font-weight: 900; color: var(--text); font-family: 'Playfair Display', serif; margin-bottom: 6px; }
+  .credit-role{ font-size: 11px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); font-family: 'Poppins', sans-serif; margin-bottom: 16px; }
   .credit-desc{ font-size: 14px; line-height: 1.75; color: var(--text-soft); font-family: 'Poppins', sans-serif; margin-bottom: 20px; }
   .credit-links{ display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 
@@ -978,7 +1000,7 @@
   .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(30px);background:var(--text);color:var(--bg);padding:12px 22px;border-radius:999px;font-size:13.5px;font-weight:700;z-index:400;opacity:0;transition:all .35s ease;pointer-events:none;box-shadow:0 10px 30px rgba(26,21,18,.30);font-family:'Poppins',sans-serif;}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-  /* Back to top — raised higher above the bottom edge */
+  /* Back to top */
   .back-top{
     position:fixed;right:24px;bottom:110px;
     width:52px;height:52px;border-radius:50%;
@@ -1109,7 +1131,8 @@
   body.perf-mode .stage::after,
   body.perf-mode .orb,
   body.perf-mode .hero-badge,
-  body.perf-mode .welcome-card::before{ animation: none !important; }
+  body.perf-mode .welcome-card::before,
+  body.perf-mode .credit-avatar.ai-logo::before{ animation: none !important; }
   body.perf-mode .card,
   body.perf-mode .project-card{ transform: none !important; }
 
@@ -1278,6 +1301,19 @@
           <a href="https://yassineamine566-byte.github.io/PH-photo-links-v1/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
             <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
             Visit PH
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card reveal-up" data-id="nt">
+        <button class="bm-btn" data-bm="nt" title="Save to Bookmarks"><svg viewBox="0 0 16 16"><polygon points="8 1 10.2 5.6 15 6.3 11.5 9.7 12.3 14.5 8 12.2 3.7 14.5 4.5 9.7 1 6.3 5.8 5.6"/></svg></button>
+        <div class="project-icon">NT</div>
+        <h3 class="project-title">Hanss.wg Notes</h3>
+        <p class="project-desc">A clean, distraction-free note-taking app that runs entirely in your browser. Capture ideas, organize them with folders and tags, and keep everything private — no account, no cloud, no servers. Includes a built-in clock, calendar, markdown support, word stats, and customizable themes.</p>
+        <div class="project-links">
+          <a href="https://yassineamine566-byte.github.io/Hanss.wg-nots/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            Visit Notes
           </a>
         </div>
       </div>
@@ -1853,9 +1889,21 @@
         </div>
 
         <div class="credit-card reveal-up">
-          <div class="credit-avatar" style="background: linear-gradient(135deg, #8fa88c, rgba(143,168,140,.6));">AI</div>
-          <div class="credit-name">AI Assistant</div>
-          <div class="credit-role">Code Companion</div>
+          <div class="credit-avatar ai-logo">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="2.6" fill="currentColor" stroke="none"/>
+              <circle cx="5" cy="6" r="1.9"/>
+              <circle cx="19" cy="6" r="1.9"/>
+              <circle cx="5" cy="18" r="1.9"/>
+              <circle cx="19" cy="18" r="1.9"/>
+              <line x1="6.6" y1="7.1" x2="10.2" y2="10.5"/>
+              <line x1="17.4" y1="7.1" x2="13.8" y2="10.5"/>
+              <line x1="6.6" y1="16.9" x2="10.2" y2="13.5"/>
+              <line x1="17.4" y1="16.9" x2="13.8" y2="13.5"/>
+            </svg>
+          </div>
+          <div class="credit-name">DeepSeek</div>
+          <div class="credit-role">AI Code Companion</div>
           <p class="credit-desc">
             Helped write and refine the code. Suggested ideas, fixed bugs, added animations,
             and worked side by side with Yassine to shape the design and the tools you see here.
@@ -2633,6 +2681,7 @@ function renderBookmarks(){
   const ALL_ITEMS = {
     'hs': { title:'HS — QR & Tools Suite', desc:'Multi-purpose web page with a QR code generator.', link:'https://yassineamine566-byte.github.io/HS/', icon:'HS' },
     'ph': { title:'PH Photo Links v1', desc:'Instant image-to-link converter.', link:'https://yassineamine566-byte.github.io/PH-photo-links-v1/', icon:'PH' },
+    'nt': { title:'Hanss.wg Notes', desc:'A clean, distraction-free note-taking app.', link:'https://yassineamine566-byte.github.io/Hanss.wg-nots/', icon:'NT' },
     'gh': { title:'Open Source on GitHub', desc:'All projects in one repository.', link:'https://github.com/yassineamine566-byte', icon:'GH' },
     'post-feat': { title:'Why we build everything for free', desc:'Featured blog post.', link:'#', icon:'★' },
     'post-1': { title:'Behind HS — QR toolkit', desc:'Blog post about the HS build.', link:'#', icon:'1' },
